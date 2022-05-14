@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /admin/
+Sitemap: https://pmrnd.ru/sitemap.xml
+Host: https://pmrnd.ru

@@ -1,0 +1,933 @@
+@import "_mixins";
+$blue-primary: #0074FF;
+$blue-secondary: #5686C0;
+$white: #FFFFFF;
+$green-secondary: #8BC758;
+$worktypes: 'otoplenie',
+'kanalizaciya',
+'vodosnab',
+'proekt',
+'dostavka',
+'montag';
+@mixin bkg ($bkg-name) {
+    .bkg-#{$bkg-name} {
+        background: url("../img/#{$bkg-name}.png");
+    }
+}
+
+@each $bkg-name in $worktypes {
+    @include bkg($bkg-name);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto';
+}
+
+.container {
+    max-width: 1144px;
+    margin: 0 auto;
+    @include tablet {
+        max-width: 878px;
+    }
+    @include tablet-port {
+        max-width: 670px;
+    }
+    @include phone {
+        max-width: 375px;
+    }
+}
+
+.heading {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: space-between;
+    @include phone {
+        padding: 0 22px;
+    }
+    &__phone {
+        display: block;
+        margin-bottom: 2px;
+        font-size: 16px;
+        line-height: 26px;
+        text-decoration: none;
+        color: black;
+    }
+    &__link {
+        display: block;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        text-decoration: none;
+        color: black;
+    }
+    &__burger {
+        display: none;
+    }
+    @include tablet-port {
+        .heading__link {
+            display: none;
+        }
+        .button-secondary {
+            display: none;
+        }
+        .heading__burger {
+            display: block;
+            cursor: pointer;
+        }
+    }
+}
+
+.button-secondary {
+    text-decoration: none;
+    color: $blue-primary;
+    border: 2px solid $blue-primary;
+    border-radius: 6px;
+    padding: 12px 44px;
+    font-size: 16px;
+    line-height: 24px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+        color: $white;
+        background-color: $blue-primary;
+    }
+}
+
+.promo {
+    @include phone {
+        padding: 0 22px;
+    }
+    img {
+        @include tablet {
+            max-width: 100%;
+        }
+    }
+}
+
+.promo-heading {
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 77px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 8px;
+    margin-bottom: 120px;
+    span {
+        font-weight: 700;
+        font-size: 72px;
+        @include tablet {
+            font-size: 62px;
+        }
+        @include tablet-port {
+            font-size: 48px;
+        }
+        @include phone {
+            font-size: 22px;
+            line-height: 120%;
+        }
+    }
+    @include tablet {
+        font-size: 42px;
+    }
+    @include tablet-port {
+        font-size: 40px;
+    }
+    @include phone {
+        font-size: 20px;
+        line-height: 120%;
+    }
+}
+
+.page-heading {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 52px;
+    &:after {
+        display: block;
+        content: " ";
+        height: 2px;
+        width: 90px;
+        background-color: $blue-primary;
+        margin-top: 10px;
+        margin-bottom: 32px;
+    }
+    @include tablet-port {
+        font-size: 28px;
+        line-height: 52px;
+    }
+    @include phone {
+        font-size: 20px;
+        line-height: 120%;
+    }
+}
+
+.typesjob {
+    @include phone {
+        padding: 0 22px;
+    }
+    &__show {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    &__bkg {
+        height: 210px;
+        background-size: cover;
+        background-position: center;
+    }
+    &__card {
+        width: 340px;
+        border: 1px solid $green-secondary;
+        background-color: $green-secondary;
+        margin-bottom: 30px;
+        &--blue {
+            border-color: $blue-secondary;
+            background-color: $blue-secondary;
+        }
+        @include tablet {
+            width: 282px;
+        }
+        @include tablet-port {
+            max-width: 215px;
+            .typesjob__bkg {
+                height: 135px;
+            }
+            .typesjob__text {
+                line-height: 52px;
+            }
+        }
+        @include phone {
+            width: 160px;
+            .typesjob__bkg {
+                height: 76px;
+            }
+            .typesjob__text {
+                font-size: 16px;
+                line-height: 120%;
+                padding: 10px 12px;
+            }
+        }
+    }
+    &__text {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 72px;
+        text-align: center;
+        color: $white;
+        @include phone {
+            font-size: 16px;
+            line-height: 120%;
+        }
+    }
+    &__img {
+        width: 100%;
+        text-align: center;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.advantages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 92px;
+    margin-bottom: 140px;
+    @include tablet-port {
+        display: block;
+    }
+    @include phone {
+        padding: 0 22px;
+        margin-bottom: 72px;
+    }
+    &__left {
+        width: 340px;
+        @include tablet {
+            max-width: 223px;
+            margin-right: 50px;
+        }
+    }
+    &__right {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: calc(100% - 360px);
+        @include tablet {
+            width: calc(100% - 273px);
+        }
+        @include tablet-port {
+            width: 100%;
+        }
+    }
+    &__card {
+        width: 340px;
+        margin-bottom: 62px;
+        @include tablet {
+            width: 292px;
+        }
+    }
+    &__headr {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 72px;
+        @include phone {
+            font-size: 18px;
+            line-height: 120%;
+            margin-top: 12px;
+            margin-bottom: 16px;
+        }
+    }
+    &__text {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 26px;
+        @include phone {
+            font-size: 16px;
+            line-height: 120%;
+        }
+    }
+}
+
+.about {
+    @include phone {
+        padding: 0 22px;
+    }
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        @include phone {
+            display: block;
+        }
+    }
+    &__left {
+        width: 519px;
+        @include tablet-port {
+            width: 328px;
+            margin-right: 8px;
+        }
+    }
+    &__text {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 26px;
+        @include phone {
+            font-size: 16px;
+            line-height: 130%;
+            margin-bottom: 24px;
+        }
+    }
+    &__img {
+        margin-top: 55px;
+        @include tablet {
+            max-width: 428px;
+        }
+        @include tablet-port {
+            max-width: 100%;
+        }
+        @include phone {
+            display: none;
+        }
+    }
+    &__right {
+        width: 496px;
+        @include tablet-port {
+            width: 313px;
+        }
+    }
+    &__p {
+        position: relative;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 20px;
+        border: 1px solid $blue-primary;
+        padding: 20px;
+        @include tablet-port {
+            font-size: 16px;
+        }
+        @include phone {
+            font-size: 16px;
+            line-height: 130%;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &:after,
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: -19px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        &:after {
+            top: calc(50% - 1px);
+            transform: translateY(-50%);
+            border-color: transparent $white transparent transparent;
+            border-width: 10px;
+        }
+        &:before {
+            top: calc(50% - 1px);
+            transform: translateY(-50%);
+            border-color: transparent $blue-primary transparent transparent;
+            border-width: 12px;
+            left: -24px;
+        }
+    }
+}
+
+.video {
+    width: 100%;
+    margin-top: 72px;
+    margin-bottom: 141px;
+    @include phone {
+        margin-bottom: 60px;
+    }
+}
+
+.product {
+    @include tablet-port {
+        .product-hide {
+            display: none;
+        }
+    }
+    @include phone {
+        padding: 0 22px;
+    }
+    &__more {
+        display: none;
+        @include tablet-port {
+            display: block;
+        }
+    }
+    &__shop {}
+    &__showcase {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        @include tablet {
+            justify-content: space-between;
+        }
+    }
+    &__goods {
+        display: flex;
+        width: 270px;
+        align-items: flex-start;
+        margin-bottom: 60px;
+        margin-left: 20px;
+        @include tablet {
+            margin-left: 0;
+        }
+        @include tablet-port {
+            width: 190px;
+        }
+        @include phone {
+            width: 157px;
+            display: block;
+        }
+    }
+    &__text {
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 32px;
+        margin-left: 32px;
+        @include tablet-port {
+            font-size: 20px;
+            line-height: 32px;
+            margin-left: 22px;
+        }
+        @include phone {
+            font-size: 16px;
+            line-height: 130%;
+        }
+        @include phone {
+            margin-left: 0;
+            margin-top: 8px;
+        }
+    }
+    &__counter {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        @include phone {
+            display: block;
+            padding: 0 22px;
+        }
+    }
+    &__card {
+        width: 520px;
+        text-align: center;
+        border: 1px solid $blue-secondary;
+        box-shadow: 5px 5px 14px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        &--green {
+            border: 1px solid $green-secondary;
+        }
+        @include tablet {
+            width: 430px;
+        }
+        @include tablet-port {
+            width: 330px;
+        }
+        @include phone {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+    &__img {
+        margin-top: 22px;
+        @include tablet {
+            max-width: 100%;
+        }
+    }
+    &__heading {
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 40px;
+        margin-top: 4px;
+        margin-bottom: 10px;
+        @include tablet-port {
+            font-size: 26px;
+            line-height: 120%;
+        }
+        @include phone {
+            font-size: 20px;
+            line-height: 120%;
+        }
+    }
+    &__cart-text {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 43px;
+        @include tablet-port {
+            font-size: 16px;
+            line-height: 24px;
+        }
+        @include phone {
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+    &__item {
+        width: 100%;
+        margin-right: 30px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 46px;
+        letter-spacing: 1px;
+        color: $blue-primary;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        position: absolute;
+        right: 0;
+        top: -55px;
+        svg {
+            margin-left: 12px;
+        }
+    }
+    &__card-top {
+        width: 100%;
+        padding: 0 30px;
+        @include tablet {
+            padding: 20px;
+        }
+    }
+    &__card-botom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 13px;
+        background-color: $blue-secondary;
+        position: relative;
+        &--green {
+            background-color: $green-secondary;
+        }
+        &-1 {
+            height: 228px;
+            @include phone {
+                height: 178px;
+            }
+        }
+        &-2 {
+            height: 214px;
+        }
+        &-3 {
+            height: 136px;
+        }
+        &-4 {
+            height: 299px;
+        }
+    }
+    &__card-img {
+        margin: 33px 0 33px 0;
+        @include tablet {
+            max-width: 90%;
+        }
+    }
+    &__more {
+        text-align: center;
+        color: $blue-primary;
+        line-height: 46px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+    &__dots {
+        line-height: 0;
+    }
+    &__dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: $blue-primary;
+        margin-right: 12px;
+    }
+}
+
+.feedback {
+    background-color: #F2F2F2;
+    height: 670px;
+    padding-top: 100px;
+    margin-top: 100px;
+    @include tablet-port {
+        padding-bottom: 100px;
+    }
+    @include phone {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+    &__text {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 30px;
+        @include tablet-port {
+            font-size: 16px;
+            line-height: 130%;
+        }
+    }
+    &__form {
+        display: flex;
+        justify-content: space-between;
+        @include tablet-port {
+            display: block;
+        }
+    }
+    &__left {
+        display: flex;
+        flex-direction: column;
+    }
+    &__right {
+        width: 100%;
+        margin-left: 20px;
+        @include tablet-port {
+            margin-left: 0;
+        }
+    }
+    &__input-text {
+        width: 520px;
+        padding: 10px 0 10px 16px;
+        border: 1px solid #BEBEBE;
+        box-sizing: border-box;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: #838383;
+        margin-bottom: 20px;
+        @include phone {
+            width: 100%;
+        }
+        &--textArea {
+            width: 100%;
+            height: 165px;
+            resize: none;
+            @include tablet-port {
+                max-width: 520px;
+            }
+        }
+    }
+    &__form-check {
+        margin-bottom: 32px;
+        #error-checkbox {
+            top: 32px;
+        }
+    }
+    &__form-check-inp {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+    &__form-check-inp+label {
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+    }
+    &__form-check-inp+label::before {
+        content: '';
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        flex-grow: 0;
+        border: 1px solid #adb5bd;
+        background: #FFFFFF;
+        margin-right: 1.1em;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 50% 50%;
+    }
+    &__form-check-inp:checked+label::before {
+        border-color: #0b76ef;
+        background-color: #0b76ef;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+    }
+    &__left-text {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: #BEBEBE;
+        span {
+            border-bottom: 1px solid $blue-secondary;
+        }
+    }
+    &__button {
+        width: 265px;
+        color: $white;
+        background-color: $blue-primary;
+        border: 2px solid $blue-primary;
+        border-radius: 6px;
+        padding: 12px 84px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+            background-color: #0C6BDD;
+        }
+    }
+    &__wrap {
+        position: relative;
+    }
+}
+
+.contacts {
+    padding: 130px 190px;
+    display: flex;
+    justify-content: space-between;
+    @include tablet {
+        display: block;
+        padding: 60px 74px;
+    }
+    @include phone {
+        padding: 40px 22px;
+    }
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        line-height: 26px;
+    }
+    &__row {
+        display: flex;
+        &--inner {
+            margin-bottom: 20px;
+            @include tablet {
+                display: flex !important;
+                width: 33%;
+            }
+            @include phone {
+                display: block !important;
+                width: 100%;
+            }
+        }
+        @include tablet {
+            display: block;
+        }
+        @include phone {
+            display: flex;
+        }
+    }
+    &__cell {
+        width: 250px;
+        margin-bottom: 35px;
+        @include tablet {
+            width: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        @include phone {
+            display: block;
+        }
+        &--center {
+            display: flex;
+            align-items: center;
+        }
+    }
+    &__icon {
+        margin-right: 14px;
+        @include phone {
+            margin-bottom: 5px;
+        }
+    }
+    &__text a {
+        color: black;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 26px;
+        @include tablet-port {
+            font-size: 16px;
+        }
+    }
+    &__map {
+        width: 100%;
+    }
+}
+
+.footer {
+    width: 100%;
+    height: 100px;
+    background-color: $blue-secondary;
+    color: $white;
+    @include phone {
+        width: auto;
+        height: auto;
+        padding: 22px;
+    }
+    &__container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include phone {
+            display: block;
+        }
+    }
+    &__left {
+        @include phone {
+            margin-bottom: 24px;
+        }
+    }
+    &__right {
+        display: flex;
+        align-items: center;
+        @include phone {
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+    }
+    &__phones {
+        margin-right: 26px;
+        @include phone {
+            margin-right: 24px;
+            margin-top: 24px;
+            display: inline-block;
+        }
+        a {
+            display: block;
+            margin-bottom: 2px;
+            font-size: 16px;
+            line-height: 20px;
+            text-decoration: none;
+            color: $white;
+        }
+    }
+    &__item {
+        margin-right: 26px;
+        color: $white;
+        text-decoration: none;
+        font-size: 16px;
+        line-height: 20px;
+    }
+    &__inst {
+        @include phone {
+            position: relative;
+            top: 10px;
+            right: 45px;
+        }
+    }
+}
+
+#error-checkbox {
+    display: none;
+}
+
+.error {
+    display: none;
+    color: #DF0000;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 300;
+    position: absolute;
+    top: 42px;
+}
+
+.burger {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 462px;
+    background-color: white;
+    border-radius: 8px 0 0 0;
+    box-shadow: -3px 4px 3px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    z-index: 10;
+    @include phone {
+        width: 320px;
+    }
+    &__btn {
+        display: inline-block !important;
+    }
+    &__header {
+        display: flex;
+        justify-content: end;
+        padding: 15px 49px;
+        background-color: $blue-secondary;
+    }
+    &__close {
+        cursor: pointer;
+    }
+    &__content {
+        padding: 45px;
+    }
+    &__link {
+        display: block;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #5686C0;
+        margin-bottom: 36px;
+        color: black;
+        text-decoration: none;
+    }
+    .heading__phones {
+        margin-bottom: 32px;
+        a {
+            padding-bottom: 0;
+            border-bottom: 0;
+            margin-bottom: 2px;
+            line-height: 26px;
+        }
+    }
+}
